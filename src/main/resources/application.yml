@@ -6,6 +6,9 @@ spring:
         default_batch_fetch_size: 1000
     hibernate:
       ddl-auto: create
+  redis:
+    host: localhost
+    port: 6379
 
 logging:
   level:

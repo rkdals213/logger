@@ -7,7 +7,8 @@ plugins {
     kotlin("plugin.spring") version "1.6.0"
     kotlin("plugin.jpa") version "1.6.0"
     id ("org.jetbrains.kotlin.plugin.allopen") version "1.5.21"
-    id ("org.jetbrains.kotlin.plugin.noarg") version "1.5.21"
+    id ("org.jetbrains.kotlin.plugin.noarg") version "1.6.10"
+
 }
 
 allOpen {
@@ -30,6 +31,7 @@ repositories {
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.springframework.boot:spring-boot-starter-data-redis")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-aop")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
