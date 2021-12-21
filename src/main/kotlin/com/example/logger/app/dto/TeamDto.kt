@@ -16,10 +16,6 @@ class TeamDto() : Serializable {
             .members
             .map { MemberDto(it) }
     }
-
-    override fun toString(): String {
-        return "TeamDto(teamId=$teamId, teamName='$teamName', members=$members)"
-    }
 }
 
 class MemberDto() : Serializable {
@@ -29,9 +25,5 @@ class MemberDto() : Serializable {
     constructor(member: Member) : this() {
         memberId = member.id
         memberName = member.name
-    }
-
-    override fun toString(): String {
-        return "MemberDto(memberId=$memberId, memberName='$memberName')"
     }
 }

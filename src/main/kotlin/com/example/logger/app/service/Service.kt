@@ -22,7 +22,7 @@ class Service(
         .orElseGet {
             val result = teamRepository.findAll()
                 .map { TeamDto(it) }
-            val save = teamRedisRepository.save(TeamDtoPoint("key", 5, result))
+            teamRedisRepository.save(TeamDtoPoint("key", 5, result))
             result
         }
 
