@@ -38,7 +38,6 @@ class Team(
 
 @Embeddable
 class Members(
-
     @OneToMany
     val members: MutableList<Member> = mutableListOf()
 ) {
