@@ -11,7 +11,9 @@ data class TeamDto(
     constructor(team: Team) : this(
         team.id,
         team.name,
-        team.members.members.map { MemberDto(it) }
+        team.members
+            .members
+            .map { MemberDto(it) }
     )
 }
 
