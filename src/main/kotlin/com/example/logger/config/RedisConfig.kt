@@ -23,9 +23,7 @@ class RedisRepositoryConfig(
 ) {
 
     @Bean
-    fun redisConnectionFactory(): RedisConnectionFactory {
-        return LettuceConnectionFactory(redisProperties.host, redisProperties.port)
-    }
+    fun redisConnectionFactory() = LettuceConnectionFactory(redisProperties.host, redisProperties.port)
 
     @Bean
     fun redisTemplate(): RedisTemplate<*, *> {
