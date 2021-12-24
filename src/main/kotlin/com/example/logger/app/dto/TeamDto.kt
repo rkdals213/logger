@@ -4,9 +4,9 @@ import com.example.logger.app.entity.Member
 import com.example.logger.app.entity.Team
 
 data class TeamDto(
-    var teamId: Long = 0L,
-    var teamName: String = "",
-    var members: List<MemberDto> = listOf()
+    val teamId: Long = 0L,
+    val teamName: String = "",
+    val members: List<MemberDto> = listOf()
 ) {
     constructor(team: Team) : this(
         team.id,
@@ -16,8 +16,8 @@ data class TeamDto(
 }
 
 data class MemberDto(
-    var memberId: Long = 0L,
-    var memberName: String = ""
+    val memberId: Long = 0L,
+    val memberName: String = ""
 ) {
     constructor(member: Member) : this(
         member.id,
