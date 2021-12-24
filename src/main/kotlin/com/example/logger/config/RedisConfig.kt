@@ -11,10 +11,10 @@ import org.springframework.data.redis.repository.configuration.EnableRedisReposi
 
 @Configuration
 @ConfigurationProperties("spring.redis")
-class RedisProperties {
-    var host = ""
-    var port = 0
-}
+class RedisProperties(
+    var host: String = "",
+    var port: Int = 0
+)
 
 @Configuration
 @EnableRedisRepositories
