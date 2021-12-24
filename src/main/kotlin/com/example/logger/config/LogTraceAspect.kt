@@ -18,6 +18,7 @@ class LogTraceAspect(private val logTrace: LogTrace) {
             status = logTrace.begin(message)
 
             val result = joinPoint.proceed()
+
             logTrace.end(status)
             result
         } catch (e: Exception) {
