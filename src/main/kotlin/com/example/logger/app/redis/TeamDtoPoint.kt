@@ -26,8 +26,4 @@ class TeamDtoPoint(
         this.amount = amount
         this.teams = teams
     }
-
-    override fun toString(): String {
-        return "TeamDtoPoint(id='$id', amount=$amount, teams=$teams, refreshTime=$refreshTime)"
-    }
 }
