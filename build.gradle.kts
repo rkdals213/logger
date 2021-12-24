@@ -6,8 +6,8 @@ plugins {
     kotlin("jvm") version "1.6.0"
     kotlin("plugin.spring") version "1.6.0"
     kotlin("plugin.jpa") version "1.6.0"
-    id ("org.jetbrains.kotlin.plugin.allopen") version "1.6.10"
-    id ("org.jetbrains.kotlin.plugin.noarg") version "1.6.10"
+    id("org.jetbrains.kotlin.plugin.allopen") version "1.6.10"
+    id("org.jetbrains.kotlin.plugin.noarg") version "1.6.10"
 
 }
 
@@ -40,6 +40,8 @@ dependencies {
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     runtimeOnly("com.h2database:h2")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+
 }
 
 tasks.withType<KotlinCompile> {
