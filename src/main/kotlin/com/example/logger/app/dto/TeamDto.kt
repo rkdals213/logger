@@ -4,26 +4,24 @@ import com.example.logger.app.entity.Member
 import com.example.logger.app.entity.Team
 import java.io.Serializable
 
-class TeamDto() : Serializable {
-    var teamId = 0L
-    var teamName = ""
+data class TeamDto(
+    var teamId: Long = 0L,
+    var teamName: String = "",
     var members: List<MemberDto> = listOf()
-
-    constructor(team: Team) : this() {
-        this.teamId = team.id
-        this.teamName = team.name
-        this.members = team.members
-            .members
-            .map { MemberDto(it) }
-    }
+) : Serializable {
+    constructor(team: Team) : this(
+        team.id,
+        team.name,
+        team.members.members.map { MemberDto(it) }
+    )
 }
 
-class MemberDto() : Serializable {
-    var memberId = 0L
-    var memberName = ""
-
-    constructor(member: Member) : this() {
-        memberId = member.id
-        memberName = member.name
-    }
+data class MemberDto(
+    var memberId: Long = 0L,
+    var memberName: String = ""
+) : Serializable {
+    constructor(member: Member) : this(
+        member.id,
+        member.name
+    )
 }
