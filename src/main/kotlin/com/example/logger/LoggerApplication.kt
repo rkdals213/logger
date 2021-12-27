@@ -31,13 +31,15 @@ class InitService(
         @Transactional
         class Init(private val entityManager: EntityManager) {
             fun init() {
-                val team1 = Team("Team1")
-                entityManager.persist(team1)
+                for (i in 0 until 10) {
+                    val team = Team("Team$i")
+                    entityManager.persist(team)
 
-                val member = Member("member1", team1)
-                team1.addMember(member)
+                    val member = Member("member$i", team)
+                    team.addMember(member)
 
-                entityManager.persist(member)
+                    entityManager.persist(member)
+                }
             }
         }
     }
