@@ -35,10 +35,11 @@ class InitService(
                     val team = Team("Team$i")
                     entityManager.persist(team)
 
-                    val member = Member("member$i", team)
-                    team.addMember(member)
-
-                    entityManager.persist(member)
+                    for (j in 0 until 10) {
+                        val member = Member("member$i$j", team)
+                        team.addMember(member)
+                        entityManager.persist(member)
+                    }
                 }
             }
         }
