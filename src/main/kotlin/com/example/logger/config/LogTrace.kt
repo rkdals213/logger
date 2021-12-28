@@ -46,6 +46,11 @@ class LogTraceImpl : LogTrace {
         val stopTimeMs = System.currentTimeMillis()
         val resultTimeMs: Long = stopTimeMs - status.startTimeMs
         val traceId: TraceId = status.traceId
+        completeLog(e, traceId, status, resultTimeMs)
+        releaseTraceId()
+    }
+
+    private fun completeLog(e: Exception?, traceId: TraceId, status: TraceStatus, resultTimeMs: Long) {
         if (e == null) {
             log.info(
                 "[{}] {}{} time={}ms",
@@ -54,35 +59,37 @@ class LogTraceImpl : LogTrace {
                 status.message,
                 resultTimeMs
             )
-        } else {
-            log.info(
-                "[{}] {}{} time={}ms ex={}",
-                traceId.id,
-                addSpace(EX_PREFIX, traceId.level),
-                status.message,
-                resultTimeMs,
-                e.toString()
-            )
+            return
         }
-        releaseTraceId()
+
+        log.info(
+            "[{}] {}{} time={}ms ex={}",
+            traceId.id,
+            addSpace(EX_PREFIX, traceId.level),
+            status.message,
+            resultTimeMs,
+            e.toString()
+        )
     }
 
     private fun syncTraceId() {
         val traceId = traceIdHolder.get()
         if (traceId == null) {
             traceIdHolder.set(TraceId())
-        } else {
-            traceIdHolder.set(traceId.createNextId())
+            return
         }
+
+        traceIdHolder.set(traceId.createNextId())
     }
 
     private fun releaseTraceId() {
         val traceId = traceIdHolder.get()
         if (traceId.isFirstLevel()) {
             traceIdHolder.remove() //destroy
-        } else {
-            traceIdHolder.set(traceId.createPreviousId())
+            return
         }
+
+        traceIdHolder.set(traceId.createPreviousId())
     }
 
     private fun addSpace(prefix: String, level: Int): String {
