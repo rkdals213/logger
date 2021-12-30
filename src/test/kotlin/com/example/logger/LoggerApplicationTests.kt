@@ -27,7 +27,7 @@ class LoggerApplicationTests @Autowired constructor(
 
     @Test
     fun contextLoads() {
-        pointcut.setExpression("execution(* *(..))")
+        pointcut.expression = "execution(* com.example.logger.app..*(..))"
         Assertions.assertThat(pointcut.matches(helloMethod!!, Service::class.java)).isTrue
     }
 
