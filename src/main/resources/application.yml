@@ -10,8 +10,8 @@ spring:
     host: localhost
     port: 6379
 
-#logging:
-#  level:
-#    org.hibernate.SQL: debug
-#    org.hivernate.type: trace
-#    org.springframework.transaction.interceptor: trace
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hivernate.type: trace
+    org.springframework.transaction.interceptor: trace
